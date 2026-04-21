@@ -20,21 +20,24 @@ else
     echo 'fortune found' >&2
 fi
 
-mkdir -p ~/.local/share/fortune
-curl -L -o ~/.local/share/fortune/tetofortunes https://gitea.cloudaf.cc/eric/TetoSongOfTheDay/raw/branch/main/tetofortunes
-curl -L -o ~/.local/share/fortune/tetofortunes.dat https://gitea.cloudaf.cc/eric/TetoSongOfTheDay/raw/branch/main/tetofortunes.dat
+mkdir -p ~/.local/share/tetosong
+curl -L -o ~/.local/share/tetosong/tetofortunes https://github.com/eric5949/TetoSongOfTheDay/raw/a52c877bfb1508f0223469e3b9e86c65ee6915ae/tetofortunes
+curl -L -o ~/.local/share/tetosong/tetofortunes.dat https://github.com/eric5949/TetoSongOfTheDay/raw/a52c877bfb1508f0223469e3b9e86c65ee6915ae/tetofortunes.dat
 
-#cat > $wineprefix_path/tetosong <<EOF
+cat > ~/.local/bin/tetosong <<EOF
 #!/bin/bash
-#if ! [ -x "$(command -v fortune)" ]; then
-#  echo 'fortune is not installed, checking for misfortune' >&2
-#  if ! [ -x "$(command -v misfortune)" ]; then
-#      echo 'neither program is installed, exiting' >&2
-#      exit 1
-#    else
-#      echo 'misfortune found' >&2
-#  fi
-#else
-#    fortune ~/.local/share/tetofortunes/tetofortunes
-#fi
-#EOF
+if ! [ -x "$(command -v fortune)" ]; then
+  echo 'fortune is not installed, checking for misfortune' >&2
+  if ! [ -x "$(command -v misfortune)" ]; then
+      echo 'neither program is installed, exiting' >&2
+      exit 1
+  fi
+else
+    fortune ~/.local/share/tetosong/tetofortunes
+fi
+EOF
+
+chmod +x ~/.local/bin/tetosong
+
+
+echo "you can get your Teto Song Of the Day by typing in tetosong or adding it to your bashrc :)"
