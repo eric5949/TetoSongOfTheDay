@@ -16,7 +16,7 @@ if ! [ -x "$(command -v fortune)" ]; then
       if [ "$AUDIO" = "YES" ]; then
           nohup ffplay -nodisp -autoexit -v quiet ~/.local/share/tetosong/sv2SOTD.wav 2>/dev/null >/dev/null &
       fi
-    misfortune ~/.local/share/tetosong
+    misfortune ~/.local/share/tetosong/* # fortune doesnt care if you give it a directory, apparently misfortune does. watch this be a problem when i go to add SynthV Teto in a separate file.
   fi
 else
     if [ "$AUDIO" = "YES" ]; then
