@@ -16,9 +16,9 @@ CURLURL="https://vocadb.net/api/songs?songTypes=Original&afterDate=${AFTERDATE}&
 echo "CURLURL: $CURLURL"
 DATA=$(curl -X 'GET' \
 $CURLURL \
-    -H 'accept: application/json' | tr -d '\000-\037')
+    -H 'accept: application/json')
 # making sure there are songs to add.
-SONGS=$(echo "$DATA" | jq -r '.items | length')
+SONGS=$(echo "$DATA" | jq -c '.items | length')
 if [ "$SONGS" -eq 0 ]; then
   echo "Result is empty. No more songs."
   exit 0
