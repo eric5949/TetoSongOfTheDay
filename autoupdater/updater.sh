@@ -5,10 +5,13 @@ echo "Updating tetosong..."
 # past here is a modified installer.sh, if i build an update option into installer.sh i cant get it to run correctly with the curl command
 
 # check if the config file exists, if not download it and prompt the user for options.
+mkdir -p ~/.local/share/tetosong/
 if [ ! -f ~/.local/share/tetosong/tetosong.config ]; then
     echo "Config file not found, downloading default..."
     curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/tetosong.config
 fi
+
+mkdir -p ~/.local/share/tetosong/fortunes
 mkdir -p ~/.local/share/tetosong/fortunes/tetosotd
 curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/fortunes/tetosotd/tetofortunes
 curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/fortunes/tetosotd/tetofortunes.dat
