@@ -1,14 +1,17 @@
 #!/usr/bin/bash
 # download custom fortunes and config file
 echo "Updating tetosong..."
+
+# past here is a modified installer.sh, if i build an update option into installer.sh i cant get it to run correctly with the curl command
+
 # check if the config file exists, if not download it and prompt the user for options.
 if [ ! -f ~/.local/share/tetosong/tetosong.config ]; then
     echo "Config file not found, downloading default..."
     curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetosong.config
 fi
 mkdir -p ~/.local/share/tetosong
-curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes
-curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes.dat
+curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes
+curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes.dat
 curl -sLo ~/.local/share/tetosong/sv2SOTD.wav https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/sv2SOTD.wav
 
 # set up autoupdater

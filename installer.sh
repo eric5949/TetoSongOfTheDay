@@ -30,8 +30,8 @@ case $yn in
     * ) echo "Please answer yes or no.";;
 esac
 mkdir -p ~/.local/share/tetosong
-curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes
-curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes.dat
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes.dat
 curl -sLo ~/.local/share/tetosong/sv2SOTD.wav https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/sv2SOTD.wav
 
 # set up autoupdater

@@ -48,7 +48,7 @@ while true; do
           echo ""
           echo "▼・ᴗ・▼"
           echo "%"
-      done >> tetofortunes
+      done >> fortunes/tetosotd/tetofortunes
       if [ "$START" -ge "$MAX" ]; then
         echo "Reached max results. Stopping."
         break
@@ -57,5 +57,5 @@ while true; do
     fi
 done
 # create the fortune database from tetofortunes
-rm tetofortunes.dat # delete the old database if it extists.
-strfile -c % tetofortunes tetofortunes.dat
+rm fortunes/tetofortunes.dat # delete the old database if it extists.
+strfile -c % fortunes/tetofortunes fortunes/tetofortunes.dat
