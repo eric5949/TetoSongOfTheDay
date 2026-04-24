@@ -16,15 +16,15 @@ CURLURL="https://vocadb.net/api/songs?songTypes=Original&afterDate=${AFTERDATE}&
 echo "CURLURL: $CURLURL"
 DATA=$(curl -X 'GET' \
 $CURLURL \
-    -H 'accept: application/json')
-DATE=$(echo "$DATA" | jq -r '.items[0].publishDate')
-echo "DATE: $DATE"
+    -H 'accept: application/json' | tr -d '\000-\037')
 # making sure there are songs to add.
-SONGS=$(echo "$DATA" | jq '.items | length')
+SONGS=$(echo "$DATA" | jq -r '.items | length')
 if [ "$SONGS" -eq 0 ]; then
   echo "Result is empty. No more songs."
   exit 0
 fi
+DATE=$(echo "$DATA" | jq -r '.items[0].publishDate')
+echo "DATE: $DATE"
 echo "{\"lastDate\": \"$DATE\"}" > var.json
 # looping the api to get all songs we need.
 while true; do
@@ -32,7 +32,7 @@ while true; do
     DATA=$(curl -X 'GET' \
     $CURLURL \
         -H 'accept: application/json')
-    SONGS=$(echo "$DATA" | jq '.items | length')
+    SONGS=$(echo "$DATA" | jq -r '.items | length')
     if [ "$SONGS" -eq 0 ]; then
       echo "Result is empty. No more songs."
       break
