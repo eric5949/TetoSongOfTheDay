@@ -15,7 +15,7 @@ fi
 # download custom fortunes and config file
 echo "Downloading custom fortunes and config file..."
 # download the config file and prompt the user for options.
-
+mkdir -p ~/.local/share/tetosong
 curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetosong.config
 read -p "Do you want to hear Teto in your terminal? (y/n) " yn
 case $yn in
@@ -29,7 +29,7 @@ case $yn in
     [Nn]* ) sed -i 's|^AUTOUPDATE=.*|AUTOUPDATE="NO"|' ~/.local/share/tetosong/tetosong.config ;;
     * ) echo "Please answer yes or no.";;
 esac
-mkdir -p ~/.local/share/tetosong
+
 curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes
 curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes.dat
 curl -sLo ~/.local/share/tetosong/sv2SOTD.wav https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/sv2SOTD.wav
