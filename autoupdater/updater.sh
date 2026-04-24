@@ -9,9 +9,9 @@ if [ ! -f ~/.local/share/tetosong/tetosong.config ]; then
     echo "Config file not found, downloading default..."
     curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/tetosong.config
 fi
-mkdir -p ~/.local/share/tetosong
-curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/fortunes/tetosotd/tetofortunes
-curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/fortunes/tetosotd/tetofortunes.dat
+mkdir -p ~/.local/share/tetosong/fortunes/tetosotd
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/fortunes/tetosotd/tetofortunes
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/fortunes/tetosotd/tetofortunes.dat
 curl -sLo ~/.local/share/tetosong/sv2SOTD.wav https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/eggs/sv2SOTD.wav
 
 # set up autoupdater
