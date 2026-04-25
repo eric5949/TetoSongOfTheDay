@@ -32,7 +32,7 @@ case $yn in
 esac
 read -p "Do you want to enable automatic updates? (y/n) " yn
 case $yn in
-    [Yy]* ) |
+    [Yy]* )
     sed -i 's|^AUTOUPDATE=.*|AUTOUPDATE="YES"|' ~/.local/share/tetosong/tetosong.config ;;
     [Nn]* ) sed -i 's|^AUTOUPDATE=.*|AUTOUPDATE="NO"|' ~/.local/share/tetosong/tetosong.config ;;
     * ) echo "Please answer yes or no.";;
