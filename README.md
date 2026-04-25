@@ -4,6 +4,7 @@ A small wrapper and custom list for fortune/misfortune that picks a random Teto 
 
 ## **Enable Audio to Hear "Teto Song of the Day!" in your terminal from Utau, SynthV, or SynthV2 Teto!**
 Sound plays based on the song you get!  Utau for Utau! SV for SV!
+
 https://github.com/user-attachments/assets/bc2a9909-d24a-43fa-882a-5e785cda3020
 
 ## **Now With Optional Automatic Updates!** 
