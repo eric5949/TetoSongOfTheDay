@@ -7,8 +7,8 @@ mkdir -p ~/.local/share/tetosong
 
 mkdir -p ~/.local/share/tetosong/fortunes
 mkdir -p ~/.local/share/tetosong/fortunes/tetosotd
-curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes
-curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes.dat
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes
+curl -sLo ~/.local/sharetetosong/fortunes/tetosotd/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/fortunes/tetosotd/tetofortunes.dat
 AUDIO="$(. ~/.local/share/tetosong/tetosong.config; echo $AUDIO)"
 if [ "$AUDIO" = "YES" ]; then
     curl -sLo ~/.local/share/tetosong/SOTD.zip https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/audio/teto/SOTD.zip
