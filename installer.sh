@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # check which fortune command is installed if any.
 if ! [ -x "$(command -v fortune)" ]; then
   echo 'fortune is not installed, checking for misfortune'm
@@ -16,23 +16,32 @@ fi
 echo "Downloading custom fortunes and config file..."
 # download the config file and prompt the user for options.
 mkdir -p ~/.local/share/tetosong
-curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetosong.config
+curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/tetosong.config
 read -p "Do you want to hear Teto in your terminal? (y/n) " yn
 case $yn in
-    [Yy]* ) sed -i 's|^AUDIO=.*|AUDIO="YES"|' ~/.local/share/tetosong/tetosong.config ;;
+    [Yy]* )
+    sed -i 's|^AUDIO=.*|AUDIO="YES"|' ~/.local/share/tetosong/tetosong.config
+    curl -sLo /tmp/SOTD.zip https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/audio/teto/SOTD.zip
+    mkdir -p ~/.local/share/tetosong/audio/
+    mkdir -p ~/.local/share/tetosong/audio/teto/
+    unzip -o /tmp/SOTD.zip -d ~/.local/share/tetosong/audio/teto/
+    rm /tmp/SOTD.zip
+    ;;
     [Nn]* ) sed -i 's|^AUDIO=.*|AUDIO="NO"|' ~/.local/share/tetosong/tetosong.config ;;
     * ) echo "Please answer yes or no.";;
 esac
 read -p "Do you want to enable automatic updates? (y/n) " yn
 case $yn in
-    [Yy]* ) sed -i 's|^AUTOUPDATE=.*|AUTOUPDATE="YES"|' ~/.local/share/tetosong/tetosong.config ;;
+    [Yy]* )
+    sed -i 's|^AUTOUPDATE=.*|AUTOUPDATE="YES"|' ~/.local/share/tetosong/tetosong.config ;;
     [Nn]* ) sed -i 's|^AUTOUPDATE=.*|AUTOUPDATE="NO"|' ~/.local/share/tetosong/tetosong.config ;;
     * ) echo "Please answer yes or no.";;
 esac
 
-curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes
-curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetofortunes.dat
-curl -sLo ~/.local/share/tetosong/sv2SOTD.wav https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/sv2SOTD.wav
+mkdir -p ~/.local/share/tetosong/fortunes
+mkdir -p ~/.local/share/tetosong/fortunes/tetosotd
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/fortunes/tetosotd/tetofortunes
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/fortunes/tetosotd/tetofortunes.dat
 
 # set up autoupdater
 # i use systemd, so i use systemd timers.  I'll figure out something for non-systemd users later.
@@ -41,8 +50,8 @@ if [ "$AUTOUPDATE" = "YES" ]; then
     # write and enable systemd service file and timer user services
     echo "Autoupdater enabled, updating service..."
     mkdir -p ~/.config/systemd/user
-    curl -sLo ~/.config/systemd/user/tetosong.service https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/autoupdater/tetosong.service
-    curl -sLo ~/.config/systemd/user/tetosong.timer https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/autoupdater/tetosong.timer
+    curl -sLo ~/.config/systemd/user/tetosong.service https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/autoupdater/tetosong.service
+    curl -sLo ~/.config/systemd/user/tetosong.timer https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/autoupdater/tetosong.timer
     systemctl --user daemon-reload
     systemctl --user enable tetosong.timer
     systemctl --user start tetosong.timer
@@ -52,6 +61,6 @@ fi
 # write tetosong to ~/.local/bin and tell the user how to use it.
 echo "writing tetosong to ~/.local/bin"
 mkdir -p ~/.local/bin
-curl -sLo ~/.local/bin/tetosong https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetosong
+curl -sLo ~/.local/bin/tetosong https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/tetosong
 chmod +x ~/.local/bin/tetosong
 echo "Make sure ~/.local/bin is in your PATH and you can get your Teto Song Of the Day by typing in tetosong or adding it to your bashrc :)"

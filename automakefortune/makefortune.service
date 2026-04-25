@@ -1,0 +1,7 @@
+[Unit]
+Description=tetofortunes autoupdater
+Wants=makefortune.timer
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/automakefortune.sh
