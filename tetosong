@@ -2,12 +2,12 @@
 # argument handling
 while [[ $# -gt 0 ]]; do
     case $1 in
-        -u|--update)
-            echo "Downloading tetosong updater..."
-            bash <(curl -s https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/autoupdater/updater.sh)
-            shift
-            exit 0
-            ;;
+        	-u|--update)
+        		echo "Downloading tetosong updater..."
+        		bash <(curl -s https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/autoupdater/updater.sh)
+        		shift
+        		exit 0
+        		;;
         -h|--help)
             echo "--- TETOSONG HELP ---"
             echo ""
@@ -25,8 +25,8 @@ done
 
 # check if the config file exists, if not download it
 if [ ! -f ~/.local/share/tetosong/tetosong.config ]; then
-    echo "Config file not found, downloading default..."
-    curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/tetosong.config
+	echo "Config file not found, downloading default..."
+	curl -sLo ~/.local/share/tetosong/tetosong.config https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/main/tetosong.config
 fi
 # check if the user wants to play audio
 AUDIO="$(. ~/.local/share/tetosong/tetosong.config; echo $AUDIO)"

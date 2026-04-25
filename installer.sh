@@ -40,8 +40,8 @@ esac
 
 mkdir -p ~/.local/share/tetosong/fortunes
 mkdir -p ~/.local/share/tetosong/fortunes/tetosotd
-curl -sLo ~/.local/share/tetosong/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/fortunes/tetosotd/tetofortunes
-curl -sLo ~/.local/share/tetosong/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/fortunes/tetosotd/tetofortunes.dat
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/fortunes/tetosotd/tetofortunes
+curl -sLo ~/.local/share/tetosong/fortunes/tetosotd/tetofortunes.dat https://raw.githubusercontent.com/eric5949/tetosong/refs/heads/test/fortunes/tetosotd/tetofortunes.dat
 
 # set up autoupdater
 # i use systemd, so i use systemd timers.  I'll figure out something for non-systemd users later.
